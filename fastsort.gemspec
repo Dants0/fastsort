@@ -8,12 +8,12 @@ Gem::Specification.new do |spec|
   spec.authors = ["Dants0"]
   spec.email = ["gui.dg1@hotmail.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "a fast array sorter"
+  spec.description = "Designed to efficiently organize the elements of an array in a specific order. Sorting is a fundamental operation in computer science and data processing, and the performance of a sorting algorithm is crucial."
+  spec.homepage = "https://rubygems.org/gems/fastsort"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."

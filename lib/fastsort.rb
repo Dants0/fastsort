@@ -4,5 +4,9 @@ require_relative "fastsort/version"
 
 module Fastsort
   class Error < StandardError; end
-  # Your code goes here...
+
+  class Fastsort
+    
+  end
+
 end
