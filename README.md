@@ -11,9 +11,9 @@ $ gem install 'fastsort'
 $ bundle install
 ```
 
-# Gemfile
+## TODO
+Add more efficient sorting algorithms for arrays and arrays of objects...
 
-gem 'fastsort'
 
 ## Example usage
 
