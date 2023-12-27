@@ -16,13 +16,22 @@ $ bundle install
 gem 'fastsort'
 
 ## Example usage
+
 require 'fastsort'
 
-unsorted_array = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-sorted_array = Fastsort.sort(unsorted_array)
+arr = [
+  75, 79, 21, 30, 12, 85, 24, 6, 66, 69,
+  92, 98, 18, 57, 40, 71, 92, 14, 1, 79,
+  15, 21, 55, 83, 45, 34, 25, 67, 9, 75,
+  83, 75, 99, 10, 41, 63, 79, 22, 80, 7,
+  38, 87, 31, 93, 60, 53, 39, 59, 67, 97
+]
 
-puts "Unsorted Array: #{unsorted_array}"
-puts "Sorted Array: #{sorted_array}"
+sorter = Fastsort::Quicksort.new(arr)
+
+sorter.sort_array
+
+puts "Sorted Array: #{sorter.array}"
 
 Development
 After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
