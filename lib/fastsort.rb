@@ -81,4 +81,52 @@ module Fastsort
       result
     end
   end
+
+  class Sonicsort
+    attr_accessor :array
+
+    def initialize(array)
+      raise ArgumentError, 'Array cannot be nil' if array.nil?
+      @array = array
+    end
+
+    def sort_quick_and_merge
+      raise ArgumentError, 'Array cannot be empty' if array.empty?
+      sort_and_merge(0, array.length - 1)
+      self
+    end
+
+    private
+
+    def sort_and_merge(from_idx, to_idx)
+      return if from_idx >= to_idx
+
+      # Use Quicksort before Mergesort
+      pivot_idx = quicksort_partition(from_idx, to_idx)
+
+      # Continue with Mergesort on both sides of the pivot
+      sort_and_merge(from_idx, pivot_idx - 1)
+      sort_and_merge(pivot_idx + 1, to_idx)
+    end
+
+    def quicksort_partition(from_idx, to_idx)
+      pivot_idx = array[to_idx]
+      pointer_a_idx = pointer_b_idx = from_idx
+
+      while pointer_a_idx < to_idx
+        if array[pointer_a_idx] <= pivot_idx
+          swap_values(pointer_a_idx, pointer_b_idx)
+          pointer_b_idx += 1
+        end
+        pointer_a_idx += 1
+      end
+
+      swap_values(pointer_b_idx, to_idx)
+      pointer_b_idx
+    end
+
+    def swap_values(let_idx_a, let_idx_b)
+      array[let_idx_a], array[let_idx_b] = array[let_idx_b], array[let_idx_a]
+    end
+  end
 end
