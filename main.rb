@@ -15,4 +15,5 @@ sorter_001.sort_array
 sorter_002.sort_array
 
 # puts "Sorted Array: #{sorter_001.array}"
-puts "Sorted Array: #{sorter_002.array}"
+puts "Sorted Array Quicksort: #{sorter_001.array}"
+puts "Sorted Array Mergesort: #{sorter_002.array}"
