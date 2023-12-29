@@ -36,10 +36,12 @@ arr = [
 
 sorter_001 = Fastsort::Quicksort.new(arr)
 sorter_002 = Fastsort::Mergesort.new(arr)
+sorter_003 = Fastsort::Sonicsort.new(arr)
 
 sorter_001.sort_array
 sorter_002.sort_array
+sorter_003.sort_quick_and_merge
 
-# puts "Sorted Array: #{sorter_001.array}"
 puts "Sorted Array Quicksort: #{sorter_001.array}"
 puts "Sorted Array Mergesort: #{sorter_002.array}"
+puts "Sorted Array Sonicsort: #{sorter_003.array}"

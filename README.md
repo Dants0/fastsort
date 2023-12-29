@@ -30,14 +30,17 @@ arr = [
 
 sorter001 = Fastsort::Quicksort.new(arr)
 sorter002 = Fastsort::Mergesort.new(arr)
+sorter003 = Fastsort::Sonicsort.new(arr)
 
 sorter001.sort_array
+sorter002.sort_array
+sorter003.sort_array
 
 puts "Sorted Array: #{sorter001.array}"
 puts "Sorted Array: #{sorter002.array}"
+puts "Sorted Array: #{sorter003.array}"
 
-Sorted Array Quicksort: [1, 6, 7, 9, 10, 12, 14, 15, 18, 21, 21, 22, 24, 25, 30, 31, 34, 38, 39, 40, 41, 45, 53, 55, 57, 59, 60, 63, 66, 67, 67, 69, 71, 75, 75, 75, 79, 79, 79, 80, 83, 83, 85, 87, 92, 92, 93, 97, 98, 99]
-Sorted Array Mergesort: [1, 6, 7, 9, 10, 12, 14, 15, 18, 21, 21, 22, 24, 25, 30, 31, 34, 38, 39, 40, 41, 45, 53, 55, 57, 59, 60, 63, 66, 67, 67, 69, 71, 75, 75, 75, 79, 79, 79, 80, 83, 83, 85, 87, 92, 92, 93, 97, 98, 99]
+
 
 
 ```
