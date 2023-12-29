@@ -92,41 +92,74 @@ module Fastsort
 
     def sort_quick_and_merge
       raise ArgumentError, 'Array cannot be empty' if array.empty?
-      sort_and_merge(0, array.length - 1)
+      quicksort(0, array.length - 1)
+      merge_sort(0, array.length - 1)
       self
     end
 
     private
 
-    def sort_and_merge(from_idx, to_idx)
+    def quicksort(from_idx, to_idx)
       return if from_idx >= to_idx
 
-      # Use Quicksort before Mergesort
       pivot_idx = quicksort_partition(from_idx, to_idx)
 
-      # Continue with Mergesort on both sides of the pivot
-      sort_and_merge(from_idx, pivot_idx - 1)
-      sort_and_merge(pivot_idx + 1, to_idx)
+      quicksort(from_idx, pivot_idx - 1)
+      quicksort(pivot_idx + 1, to_idx)
     end
 
     def quicksort_partition(from_idx, to_idx)
-      pivot_idx = array[to_idx]
-      pointer_a_idx = pointer_b_idx = from_idx
+      pivot_idx = to_idx
+      pivot_value = array[pivot_idx]
 
-      while pointer_a_idx < to_idx
-        if array[pointer_a_idx] <= pivot_idx
+      raise ArgumentError, 'Invalid pivot value' if pivot_value.nil?
+
+      pointer_b_idx = from_idx
+
+      ((from_idx...to_idx).to_a).each do |pointer_a_idx|
+        current_value = array[pointer_a_idx]
+
+        next if current_value.nil?
+
+        if current_value <= pivot_value
           swap_values(pointer_a_idx, pointer_b_idx)
           pointer_b_idx += 1
         end
-        pointer_a_idx += 1
       end
 
-      swap_values(pointer_b_idx, to_idx)
+      swap_values(pointer_b_idx, pivot_idx)
       pointer_b_idx
+    end
+
+
+    def merge_sort(from_idx, to_idx)
+      return if from_idx >= to_idx
+
+      middle_idx = (from_idx + to_idx) / 2
+
+      merge_sort(from_idx, middle_idx)
+      merge_sort(middle_idx + 1, to_idx)
+      merge_subarrays(from_idx, middle_idx, to_idx)
+    end
+
+    def merge_subarrays(from_idx, middle_idx, to_idx)
+      left = array[from_idx..middle_idx]
+      right = array[(middle_idx + 1)..to_idx]
+
+      result = []
+
+      until left.empty? || right.empty?
+        result << (left.first <= right.first ? left.shift : right.shift)
+      end
+
+      result.concat(left).concat(right)
+
+      array[from_idx..to_idx] = result
     end
 
     def swap_values(let_idx_a, let_idx_b)
       array[let_idx_a], array[let_idx_b] = array[let_idx_b], array[let_idx_a]
     end
   end
+
 end
