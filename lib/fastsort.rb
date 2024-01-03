@@ -86,12 +86,12 @@ module Fastsort
     attr_accessor :array
 
     def initialize(array)
-      raise ArgumentError, 'Array cannot be nil' if array.nil?
+      raise ArgumentError, "Array cannot be nil" if array.nil?
       @array = array
     end
 
     def sort_quick_and_merge
-      raise ArgumentError, 'Array cannot be empty' if array.empty?
+      raise ArgumentError, "Array cannot be empty" if array.empty?
       quicksort(0, array.length - 1)
       merge_sort(0, array.length - 1)
       self
@@ -112,7 +112,7 @@ module Fastsort
       pivot_idx = to_idx
       pivot_value = array[pivot_idx]
 
-      raise ArgumentError, 'Invalid pivot value' if pivot_value.nil?
+      raise ArgumentError, "Invalid pivot value" if pivot_value.nil?
 
       pointer_b_idx = from_idx
 
@@ -130,7 +130,6 @@ module Fastsort
       swap_values(pointer_b_idx, pivot_idx)
       pointer_b_idx
     end
-
 
     def merge_sort(from_idx, to_idx)
       return if from_idx >= to_idx
@@ -162,4 +161,32 @@ module Fastsort
     end
   end
 
+  class SelectionSort
+    attr_accessor :array
+
+    def initialize(array)
+      raise ArgumentError, "Array cannot be nil" if array.nil?
+      @array = array
+    end
+
+    def sort_array
+      raise ArgumentError, "Array cannot be empty" if array.empty?
+    end
+
+    def selection_sort(arr)
+      for i in arr.length
+        min_idx = i
+        for j in i..arr.length - 1
+          if arr[j] < arr[min_idx]
+            min_idx = j
+          end
+        end
+        swap_values(arr[i], arr[min_i])
+      end
+    end
+
+    def swap_values(let_idx_a, let_idx_b)
+      array[let_idx_a], array[let_idx_b] = array[let_idx_b], array[let_idx_a]
+    end
+  end
 end

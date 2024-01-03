@@ -32,16 +32,20 @@ arr = [
   280, 488, 411, 363, 436, 41, 356, 399, 304, 229, 254, 430, 259, 203, 201,
   115, 350, 370, 124, 382, 421, 498, 139, 345, 438, 69, 431, 27, 317, 215,
   47, 67, 251, 272, 144, 333, 220, 168, 465, 328, 130, 170, 294, 167, 52,
-  409, 117, 487, 138, 461, 489]
+  409, 117, 487, 138, 461, 489,
+]
 
 sorter_001 = Fastsort::Quicksort.new(arr)
 sorter_002 = Fastsort::Mergesort.new(arr)
 sorter_003 = Fastsort::Sonicsort.new(arr)
+sorter_004 = Fastsort::SelectionSort.new(arr)
 
 sorter_001.sort_array
 sorter_002.sort_array
 sorter_003.sort_quick_and_merge
+sorter_004.sort_array
 
 puts "Sorted Array Quicksort: #{sorter_001.array}"
 puts "Sorted Array Mergesort: #{sorter_002.array}"
 puts "Sorted Array Sonicsort: #{sorter_003.array}"
+puts "Sorted Array SelectionSort: #{sorter_004.array}"
