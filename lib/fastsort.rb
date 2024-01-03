@@ -171,22 +171,51 @@ module Fastsort
 
     def sort_array
       raise ArgumentError, "Array cannot be empty" if array.empty?
+      selection_sort(array)
     end
 
     def selection_sort(arr)
-      for i in arr.length
+      arr.each_index do |i|
         min_idx = i
-        for j in i..arr.length - 1
-          if arr[j] < arr[min_idx]
-            min_idx = j
-          end
+        (i..arr.length - 1).each do |j|
+          min_idx = j if arr[j] < arr[min_idx]
         end
-        swap_values(arr[i], arr[min_i])
+        swap_values(i, min_idx)
       end
     end
 
     def swap_values(let_idx_a, let_idx_b)
       array[let_idx_a], array[let_idx_b] = array[let_idx_b], array[let_idx_a]
+    end
+  end
+
+  class BubbleSort
+    attr_accessor :array
+
+    def initialize(array)
+      raise ArgumentError, "Array cannot be nil" if array.nil?
+      @array = array
+    end
+
+    def sort_array
+      raise ArgumentError, "Array cannot be empty" if array.empty?
+      bubble_sort(array)
+    end
+
+    def bubble_sort(arr)
+      n = arr.length
+      loop do
+        swapped = false
+
+        (n - 1).times do |i|
+          if arr[i] > arr[i + 1]
+            arr[i], arr[i + 1] = arr[i + 1], arr[i]
+            swapped = true
+          end
+        end
+
+        break unless swapped
+      end
     end
   end
 end
