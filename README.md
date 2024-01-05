@@ -28,23 +28,31 @@ arr = [
   38, 87, 31, 93, 60, 53, 39, 59, 67, 97
 ]
 
+bucket_size = 10
+
 sorter001 = Fastsort::Quicksort.new(arr)
 sorter002 = Fastsort::Mergesort.new(arr)
 sorter003 = Fastsort::Sonicsort.new(arr)
 sorter004 = Fastsort::SelectionSort.new(arr)
 sorter004 = Fastsort::BubbleSort.new(arr)
+sorter006 = Fastsort::BucketSort.new(arr, bucket_size)
+sorter007 = Fastsort::InsertionSort.new(arr)
 
 sorter001.sort_array
 sorter002.sort_array
 sorter003.sort_quick_and_merge
 sorter004.sort_array
 sorter005.sort_array
+sorter006.sort_array
+sorter007.sort_array
 
-puts "Sorted Array: #{sorter001.array}"
-puts "Sorted Array: #{sorter002.array}"
-puts "Sorted Array: #{sorter003.array}"
-puts "Sorted Array: #{sorter004.array}"
-puts "Sorted Array: #{sorter005.array}"
+puts "Sorted Array Quicksort: #{sorter_001.array}"
+puts "Sorted Array Mergesort: #{sorter_002.array}"
+puts "Sorted Array Sonicsort: #{sorter_003.array}"
+puts "Sorted Array SelectionSort: #{sorter_004.array}"
+puts "Sorted Array BubbleSort: #{sorter_005.array}"
+puts "Sorted Array BucketSort: #{sorter_006.array}"
+puts "Sorted Array InsertionSort: #{sorter_007.array}"
 
 
 

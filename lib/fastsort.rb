@@ -218,4 +218,104 @@ module Fastsort
       end
     end
   end
+
+  class BucketSort
+    attr_accessor :array, :bucket_size
+
+    def initialize(array, bucket_size)
+      raise ArgumentError, "Array cannot be nil" if array.nil?
+      @bucket_size = bucket_size
+      @array = array
+    end
+
+    def sort_array
+      raise ArgumentError, "Array cannot be empty" if array.empty?
+      bucket_sort(array, bucket_size)
+    end
+
+    def insertion_sort(array)
+      i = 0
+      while i < array.length - 1
+        j = i
+        while j >= 0
+          if array[j] > array[j + 1]
+            temp = array[j]
+            array[j] = array[j + 1]
+            array[j + 1] = temp
+          end
+          j -= 1
+        end
+        i += 1
+      end
+      return array
+    end
+
+    def bucket_sort(array, bucket_size = 5)
+      if array.empty? || array.length == 1
+        return array
+      end
+
+      min_value = array[0]
+      max_value = array[0]
+
+      array.each do |item|
+        if item < min_value
+          min_value = item
+        elsif item > max_value
+          max_value = item
+        end
+      end
+
+      bucket_count = ((max_value - min_value) / bucket_size).floor + 1
+      bucket_array = Array.new(bucket_count)
+
+      (0..bucket_array.length - 1).each do |i|
+        bucket_array[i] = []
+      end
+
+      array.each do |item|
+        bucket_array[((item - min_value) / bucket_size).floor] << item
+      end
+
+      sorted_array = []
+
+      bucket_array.each do |bucket|
+        new = insertion_sort(bucket)
+        sorted_array.concat(new)
+      end
+
+      return sorted_array
+    end
+  end
+
+  class InsertionSort
+    attr_accessor :array
+
+    def initialize(array)
+      raise ArgumentError, "Array cannot be nil" if array.nil?
+      @array = array
+    end
+
+    def sort_array
+      raise ArgumentError, "Array cannot be empty" if array.empty?
+      insertion_sort(array)
+    end
+
+    def insertion_sort(arr)
+      i = 0
+      while i < arr.length - 1
+        j = i
+        while j >= 0
+          if arr[j] > arr[j + 1]
+            temp = arr[j]
+            arr[j] = arr[j + 1]
+            arr[j + 1] = temp
+          end
+          j -= 1
+        end
+        i += 1
+      end
+      return arr
+    end
+  end
 end
